@@ -1,0 +1,19 @@
+{
+  "name": "advanced-throttle",
+  "description": "Node.js Transform stream that passes data through at `n` bytes per second",
+  "version": "1.0.0",
+  "repository": "git://github.com/CaffeineProcessorsUnited/node-advanced-throttle.git",
+  "author": "CaffeineProcessorsUnited <caffeineaddicted.de>",
+  "main": "./throttle",
+  "scripts": {
+  },
+  "engines": {
+    "node": ">= v0.8.0"
+  },
+  "dependencies": {
+    "stream-parser": ">= 0.0.2",
+    "readable-stream": ">= 0.3.0"
+  },
+  "devDependencies": {
+  }
+}

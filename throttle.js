@@ -77,11 +77,11 @@ Throttle.prototype._onchunk = function (output, done) {
     if (sleepTime > 0) {
       setTimeout(function() { this._onchunk(output, done) }.bind(this), sleepTime);
     } else {
-      this._onchunk(output, done);
+      setTimeout(function() { this._onchunk(output, done) }.bind(this), 0);
     }
   } else if (this.totalBytes < expected) {
     d();
   } else {
-    this._onchunk(output, done);
+    setTimeout(function() { this._onchunk(output, done) }.bind(this), 0);
   }
 };

@@ -54,7 +54,6 @@ Throttle.prototype.destroy = function() {
     return;
   }
   this.destroyed = true;
-
   if (typeof this.fd === 'number') {
     this.close();
   }

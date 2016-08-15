@@ -27,6 +27,7 @@ function Throttle (options) {
   this.lastTime =  this.startTime;
   this.pauseTime = 0;
 
+  this.destroyed = false;
   this.streampause = false;
 
   this._passthroughChunk();
@@ -48,12 +49,26 @@ Throttle.prototype.isStreamPaused = function() {
   return this.streampause;
 };
 
+Throttle.prototype.destroy = function() {
+  if (this.destroyed) {
+    return;
+  }
+  this.destroyed = true;
+
+  if (typeof this.fd === 'number') {
+    this.close();
+  }
+};
+
 Throttle.prototype._passthroughChunk = function () {
   this._passthrough(this.chunkSize, this._onchunk);
   this.totalBytes += this.chunkSize;
 };
 
 Throttle.prototype._onchunk = function (output, done) {
+  if (this.destroyed) {
+    return;
+  }
   if (this.streampause) {
     var now = Date.now();
     this.pauseTime += now - this.lastTime;

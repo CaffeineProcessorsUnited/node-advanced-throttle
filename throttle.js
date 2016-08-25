@@ -37,6 +37,14 @@ inherits(Throttle, Transform);
 
 Parser(Throttle.prototype);
 
+Throttle.prototype.getBPS = function() {
+  return this.bps;
+};
+
+Throttle.prototype.getWrittenTime= function() {
+  return this.totalBytes / this.bps;
+};
+
 Throttle.prototype.pauseStream = function() {
   this.streampause = true;
 };

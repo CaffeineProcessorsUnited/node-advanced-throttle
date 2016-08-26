@@ -70,7 +70,7 @@ Throttle.prototype.destroy = function() {
 Throttle.prototype._passthroughChunk = function () {
   this._passthrough(this.chunkSize, this._onchunk);
   this.totalBytes += this.chunkSize;
-  this.emit("timechanged", this.WrittenTime());
+  this.emit("timechanged", this.getWrittenTime());
 };
 
 Throttle.prototype._onchunk = function (output, done) {
